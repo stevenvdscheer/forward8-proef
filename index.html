@@ -546,7 +546,7 @@
     35% {filter:brightness(1.16)}
     100%{filter:brightness(1)}}
 
-  /* ── Wanneer willen we in gesprek? ───
+  /* ── De basis voor een gesprek ───────
      Eerste echte breuk. Hier gaat het licht aan: na twee donkere secties de
      enige plek waar de lezer opademt. De kapregel is de punt achter het
      krachtenveld erboven, de schaduw eronder zorgt dat het opent in plaats van
@@ -907,20 +907,28 @@
     .hero-main::after{background:linear-gradient(180deg,
       rgba(11,17,50,.20) 0%, rgba(11,17,50,.62) 26%,
       rgba(11,17,50,.70) 74%, rgba(11,17,50,.52) 100%)}
-    /* Twee dingen die allebei loze ruimte maakten.
-       1. min-height op 100svh: in de artifact-viewer staat de pagina in een
-          frame dat met de inhoud meegroeit, dus svh is daar niet het scherm
-          maar de framehoogte. Gemeten: bij een frame van 1600px stond er 579px
-          leeg boven de kop in plaats van 63. De bovengrens van 760px maakt dat
-          onmogelijk en verandert op een echte telefoon vrijwel niets.
-       2. justify-content:center verdeelde de speling gelijk boven en onder het
-          tekstblok -- op een scherm van 844px was dat 201px boven de
-          bovenregel. Nu staat de tekst onder de balk en zakt alle speling naar
-          beneden, waar hij de aanloop naar de cijferbalk is. */
+    /* De bovengrens van 760px blijft nodig: in de artifact-viewer staat de
+       pagina in een frame dat met de inhoud meegroeit, dus svh is daar niet het
+       scherm maar de framehoogte. Zonder grens stond er bij een frame van
+       1600px 579px leeg boven de kop.
+
+       Maar 760 was te veel. De inhoud van de hero is op een telefoon circa
+       460px -- tekstblok 300, cijferbalk 121, marge ertussen 40 -- en de rest
+       viel als één gat tussen de knop en de balk: gemeten 341px op 390x844 en
+       294px op 360x800. Dat is wat Steven zag als "een hele grote leegte".
+
+       Twee dingen samen lossen het op. De grens naar 600px, zodat de hero niet
+       langer een scherm van 932px moet vullen dat hij niet nodig heeft. En de
+       speling die overblijft weer verdeeld in plaats van onderaan gestapeld:
+       daarmee staat de bovenregel niet meer tegen de balk geplakt. Dat draait
+       de keuze van 29 augustus half terug, op Stevens verzoek -- toen was de
+       speling 330px en gaf centreren 165px boven de kop, nu is hij 140 en dus
+       70. Op een kort scherm (320x568) is er geen speling en verandert er
+       niets: daar bepaalt de inhoud de hoogte, en staat de balk waar hij stond. */
     .hero{padding-top:76px;
-          min-height:min(calc(100vh - 55px),760px);
-          min-height:min(calc(100svh - 55px),760px)}
-    .hero-main{justify-content:flex-start}
+          min-height:min(calc(100vh - 55px),600px);
+          min-height:min(calc(100svh - 55px),600px)}
+    .hero-main{justify-content:center}
 
     /* raakdoelen: geen enkele link haalde 44×44 */
     .btn{padding:14px 22px;font-size:.92rem}
@@ -1011,12 +1019,11 @@
     /* .k-hl wordt de knik naar het midden, .k-v het stukje omlaag naar het
        logo; .k-hr en de traces horen bij het kruis en hebben hier niets te
        doen */
-    .k-hr,.k-vt,.k-tr{display:none}
-    .k-lijn{background:var(--orange);opacity:.62}
-    .k-hl{left:3px;top:auto;width:50%;height:1px;transform:none;
-          bottom:calc(var(--sp) + var(--logo-mh))}
-    .k-vb{left:50%;top:auto;bottom:var(--logo-mh);height:var(--sp);width:1px;
-          transform:translateX(-.5px)}
+    /* Alle vier de armen weg. De knik naar rechts en het stukje omlaag naar de
+       tegel deden op een telefoon meer kwaad dan goed: twee losse lijntjes die
+       de kolom afsloten zonder iets te verbinden. De spine eindigt nu bij het
+       vierde onderdeel en de tegel staat eronder. */
+    .k-lijn,.k-tr{display:none}
     .k-logo{position:static;z-index:auto;transform:none;
       width:var(--logo-m);height:var(--logo-mh);margin:var(--sp) auto 0}
 
@@ -1236,7 +1243,7 @@
 
 <section class="fit" id="ingredienten">
   <div class="shell">
-    <h2 class="eyebrow">Wanneer willen we in gesprek?</h2>
+    <h2 class="eyebrow">De basis voor een gesprek</h2>
 
     <!-- De fit-selector. Vier criteria die altijd alle vier scanbaar blijven,
          met rechts (desktop) of eronder (mobiel) de toelichting van het gekozen
@@ -1589,7 +1596,7 @@
 })();
 </script>
 <script>
-/* De fit-selector in "Wanneer willen we in gesprek?".
+/* De fit-selector in "De basis voor een gesprek".
 
    Progressieve verrijking, en dat is hier geen formaliteit: de vier
    toelichtingen zijn inhoud, geen versiering. De HTML is daarom een gewone
