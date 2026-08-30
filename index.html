@@ -592,10 +592,10 @@
   .fs{background:#fff;border:1px solid var(--hair-d)}
   .fs-kop{display:grid;grid-template-columns:2.9rem minmax(0,1fr);
     gap:0 14px;align-items:baseline;width:100%;text-align:left;
-    /* de linkerpadding volgt --q-pad uit het krachtenveld, zodat het nummer
-       op dezelfde as staat als de tekst van de sectiekop erboven -- gemeten
-       stond het er 17px links van */
-    padding:clamp(15px,1.6vw,20px) clamp(18px,2vw,26px)
+    /* Links volgt --q-pad uit het krachtenveld, zodat het nummer op dezelfde as
+       staat als de tekst van de sectiekop erboven. Rechts is er 22px extra voor
+       het plusteken; zonder dat botst de titel er op 760px tegenaan. */
+    padding:clamp(15px,1.6vw,20px) calc(clamp(18px,2vw,26px) + 22px)
             clamp(15px,1.6vw,20px) clamp(26px,3.1vw,44px);
     /* De kop wordt door het script een <button>. Zonder border:0 en appearance
        houdt die zijn eigen browserrand -- border-top zette alleen de bovenkant,
@@ -671,9 +671,14 @@
     .fs-aan .fs-paneel[hidden]{display:block;visibility:hidden;
       pointer-events:none}
     .fs-aan .fs-groot{display:block}
-    .fs-aan .fs-teken{display:none}       /* tabs, geen accordeon: geen plus */
-    .fs-aan .fs-kop{padding-right:clamp(18px,2vw,26px)}
     .fs-aan .q-s{max-width:46ch}
+    /* Staat alles dicht, dan is er geen detailvlak en zou de rechterkolom een
+       lege witte helft zijn. De lijst neemt dan de volle breedte; zodra je er
+       een opent splitst het vlak in tweeën en verschijnt de toelichting ernaast.
+       De knop verspringt daarbij niet: die zit in het eigen raster van .fs-slot,
+       los van de kolommen van het vlak. */
+    .fs-aan.fs-dicht{grid-template-columns:1fr}
+    .fs-aan.fs-dicht .fs-paneel[hidden]{display:none}
   }
 
   .reveal{opacity:0;transform:translateY(18px);
@@ -1261,7 +1266,7 @@
     <div class="fs">
       <div class="fs-kop" id="fs-k1" data-paneel="fs-p1"><span class="q-n">01</span><span class="q-t">Pre-seed en seed</span></div>
       <div class="fs-paneel" id="fs-p1" aria-labelledby="fs-k1"><span class="fs-groot" aria-hidden="true">01</span><p class="q-s">We gaan vroeg genoeg samenwerken om nog het verschil te kunnen maken, maar met genoeg fundament om te kunnen versnellen.</p></div>
-      <div class="fs-kop" id="fs-k2" data-paneel="fs-p2"><span class="q-n">02</span><span class="q-t">Een AI-businessmodel</span></div>
+      <div class="fs-kop" id="fs-k2" data-paneel="fs-p2"><span class="q-n">02</span><span class="q-t">AI-businessmodel</span></div>
       <div class="fs-paneel" id="fs-p2" aria-labelledby="fs-k2"><span class="fs-groot" aria-hidden="true">02</span><p class="q-s">Verticale AI, diep in &eacute;&eacute;n sector. Horizontale AI, breed toepasbaar. Of deep-tech AI.</p></div>
       <div class="fs-kop" id="fs-k3" data-paneel="fs-p3"><span class="q-n">03</span><span class="q-t">Afzetmarkt</span></div>
       <div class="fs-paneel" id="fs-p3" aria-labelledby="fs-k3"><span class="fs-groot" aria-hidden="true">03</span><p class="q-s">Een grote markt of een duidelijke ineffici&euml;ntie die jij oplost, met een drempel die concurrenten buiten houdt. Internationale schaalbaarheid is een pre.</p></div>
@@ -1609,8 +1614,13 @@
    Geen tablist-rol: die eist dat de tablijst alleen tabs bevat, en de panelen
    staan hier bewust tussen de koppen zodat mobiel en desktop dezelfde DOM
    delen. Het patroon is dus een uitklap: aria-expanded op de knop,
-   aria-controls naar het paneel, aria-labelledby terug. Boven 760px staat er
-   precies één open, eronder mogen het er meer zijn. */
+   aria-controls naar het paneel, aria-labelledby terug.
+
+   Alles staat dicht bij het laden. Boven 760px is er hooguit één tegelijk open
+   -- klik je een tweede, dan sluit de eerste, en klik je de open kop nog eens,
+   dan gaat hij dicht en is het vlak weer een lijst. Eronder mogen er meer
+   tegelijk openstaan. De klasse .fs-dicht op het vlak zegt of er iets open is;
+   de CSS laat de lijst dan de volle breedte nemen. */
 (function(){
   var vlak = document.querySelector('.fs');
   if(!vlak) return;
@@ -1645,21 +1655,31 @@
   }
   function alleen(i){ knoppen.forEach(function(_, j){ zet(j, j === i); }); }
 
-  function klik(i){
-    if(breed.matches) alleen(i);
-    else zet(i, knoppen[i].getAttribute('aria-expanded') !== 'true');
+  /* .fs-dicht zegt of er iets openstaat. Zonder die klasse zou de rechterkolom
+     op desktop een lege witte helft zijn zodra alles dicht is. */
+  function stand(){
+    var iets = false;
+    knoppen.forEach(function(b){ if(b.getAttribute('aria-expanded') === 'true') iets = true; });
+    vlak.classList.toggle('fs-dicht', !iets);
   }
 
-  /* Bij een wissel van breekpunt: boven 760 moet er precies één open staan.
-     Welke, dat is de eerste die openstond -- zo blijft de keuze van de lezer
-     bewaard in plaats van dat hij terugspringt naar 01. */
+  function klik(i){
+    var open = knoppen[i].getAttribute('aria-expanded') === 'true';
+    if(breed.matches){ if(open) zet(i, false); else alleen(i); }
+    else zet(i, !open);
+    stand();
+  }
+
+  /* Bij een wissel van breekpunt: boven 760 mag er hooguit één openstaan. Welke,
+     dat is de eerste die openstond -- zo blijft de keuze van de lezer bewaard.
+     Stond alles dicht, dan blijft alles dicht; niets gaat vanzelf open. */
   function herstel(){
     var eerste = -1;
     knoppen.forEach(function(b, j){
       if(eerste < 0 && b.getAttribute('aria-expanded') === 'true') eerste = j;
     });
-    if(breed.matches) alleen(eerste < 0 ? 0 : eerste);
-    else if(eerste < 0) zet(0, true);
+    if(breed.matches && eerste > -1) alleen(eerste);
+    stand();
   }
 
   knoppen.forEach(function(b, i){
@@ -1677,7 +1697,8 @@
     });
   });
 
-  alleen(0);                              /* 01 Pre-seed en seed staat open */
+  knoppen.forEach(function(_, j){ zet(j, false); });   /* alles dicht bij het laden */
+  stand();
   vlak.classList.add('fs-aan');
   if(breed.addEventListener) breed.addEventListener('change', herstel);
   else if(breed.addListener) breed.addListener(herstel);
