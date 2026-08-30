@@ -164,8 +164,12 @@
   h1 .w{display:inline-block;opacity:0;transform:translateY(.32em);
         animation:rise .62s cubic-bezier(.22,.9,.3,1) forwards}
   @keyframes rise{to{opacity:1;transform:none}}
+  /* 38ch was geijkt op één zin van 106 tekens. De subregel is er 218 en werd
+     daarmee op desktop een kolom van 482px en vijf regels onder een kop van
+     898px -- een smalle staaf onder een brede zin. Op 52ch is het er vier, en
+     staat hij als blok beter onder de kop. Nog steeds smaller dan de kop zelf. */
   .hero-sub{margin:0 0 42px;font-size:clamp(1.02rem,1.5vw,1.22rem);
-    font-weight:400;color:var(--dim);max-width:38ch;line-height:1.5;
+    font-weight:400;color:var(--dim);max-width:52ch;line-height:1.5;
     text-shadow:0 0 3px rgba(11,17,50,.60);
     opacity:0;animation:rise .6s .78s cubic-bezier(.22,.9,.3,1) forwards}
   .hero-act{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;
@@ -1154,7 +1158,7 @@
     <div class="shell">
     <p class="eyebrow">The AI Growth Ecosystem</p>
     <h1 id="h1"></h1>
-    <p class="hero-sub">Forward8 helpt AI-bedrijven te groeien met kennis, expertise, netwerk en een entry in de corporate wereld.</p>
+    <p class="hero-sub">Forward8 helpt AI-bedrijven te groeien met kennis, ervaring en toegang tot haar netwerk van corporates, overheden en MKB-ondernemers. Wil jij sparren met experts, toekomstige klanten en investeerders in ons ecosysteem?</p>
     <div class="hero-act">
       <a class="btn" href="#">Start het gesprek &rarr;</a>
     </div>
