@@ -45,6 +45,23 @@
     --echo:180px;          /* uitloop van een echo onder een breuk */
     --drift:300px;         /* koel papier → warm papier */
 
+    /* ── de typografische ladder ───────
+       Eén plek voor elke maat onder de koppen, want die werden op 34 losse
+       plekken apart gekozen en dat liep uiteen: zeven waarden tussen 13,8 en
+       15,7px die allemaal "lopende tekst" moesten zijn, en zeven tussen 9,6 en
+       11,5 die allemaal "label" moesten zijn. Nu twee stappen voor tekst, twee
+       voor labels, één voor de mono-nummers.
+
+       Boven deze ladder staan de koppen, met hun eigen clamps:
+       h1 31,2-72 · kwadrantwoord 28-44 · sectiekop 24,8-32,8 · claim 19,2-26,9 */
+    --t-h3:1.35rem;      /* 21,6 — persoonsnaam, criteriumtitel (bovengrens) */
+    --t-h4:1.16rem;      /* 18,6 — venturenaam                              */
+    --t-body:1rem;       /* 16   — lopende tekst                            */
+    --t-body-s:.94rem;   /* 15   — tekst in dichte blokken, navigatie       */
+    --t-nr:.78rem;       /* 12,5 — mono nummers                             */
+    --t-label:.72rem;    /* 11,5 — micro-labels                             */
+    --t-label-s:.66rem;  /* 10,6 — micro in dichte componenten              */
+
     --f:'Host Grotesk','Helvetica Neue',Arial,sans-serif;
     --m:'Geist Mono',ui-monospace,Menlo,monospace;
     --d:'Familjen Grotesk','Host Grotesk','Helvetica Neue',Arial,sans-serif;
@@ -72,11 +89,11 @@
   .logo{height:34px;width:auto;display:block;flex:none}
   .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
   .nav-links a{display:block;padding:13px 0;min-width:44px;color:var(--dim);text-decoration:none;
-               font-size:.88rem;font-weight:500;
+               font-size:var(--t-body-s);font-weight:500;
                letter-spacing:.006em;transition:color .18s}
   .nav-links a:hover,.nav-links a:focus-visible{color:var(--white)}
   .btn{display:inline-block;background:var(--orange);color:#1B1206;
-       font-weight:700;font-size:.86rem;letter-spacing:.006em;
+       font-weight:700;font-size:var(--t-body-s);letter-spacing:.006em;
        padding:14px 22px;border-radius:3px;text-decoration:none;
        transition:background .18s,transform .18s}
   .btn:hover{background:#F09A5B}
@@ -124,7 +141,7 @@
      slotregel), en bij een bedrijf dat Forward8 heet wijst hij de goede kant op.
      Als masker met currentColor, zodat hij op navy én op papier meekleurt. */
   .eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 30px;
-    font-family:var(--m);font-size:.72rem;font-weight:500;
+    font-family:var(--m);font-size:var(--t-label);font-weight:500;
     letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
   .eyebrow::before{content:'';flex:none;width:20px;height:10px;
     background-color:currentColor;
@@ -214,7 +231,7 @@
      teller loopt. Eén keer gezet, nooit tijdens de animatie. Hangt eraan dat
      var(--m) een monospace is. */
   .nr{display:inline-block}
-  .tick-lab{display:block;margin-top:9px;font-family:var(--m);font-size:.62rem;
+  .tick-lab{display:block;margin-top:9px;font-family:var(--m);font-size:var(--t-label-s);
     font-weight:500;letter-spacing:.12em;text-transform:uppercase;line-height:1.45;
     color:rgba(255,255,255,.58)}
   /* De oranje streep tekent zich terwijl het cijfer optelt: op desktop een
@@ -333,7 +350,7 @@
             align-content:center;gap:0;
             border-left:1px solid var(--hair);
             padding-left:clamp(20px,2.4vw,36px);
-            font-family:var(--m);font-size:.86rem;font-weight:600;
+            font-family:var(--m);font-size:var(--t-nr);font-weight:600;
             letter-spacing:.14em;color:var(--orange);
             font-variant-numeric:tabular-nums;text-align:right}
   .t-motief span{padding:.46em 0;border-top:1px solid rgba(231,138,71,.26)}
@@ -376,19 +393,19 @@
   .k-grid > li:nth-child(3) .k-q,
   .k-grid > li:nth-child(4) .k-q{padding-top:var(--q-binnen)}
   .k-q .t-n{display:block;margin-bottom:clamp(11px,1.2vw,16px)}
-  .t-n{font-family:var(--m);font-size:.78rem;font-weight:600;
+  .t-n{font-family:var(--m);font-size:var(--t-nr);font-weight:600;
        letter-spacing:.1em;color:var(--orange);
        font-variant-numeric:tabular-nums}
   /* Eén clamp voor alle breedtes, geen mediaquery: twee clamps met een
      breekpunt ertussen leverden een sprong van 3,2px op waarbij het woord
      kromp terwijl het scherm groeide. Ongewijzigd uit de vorige vorm. */
   .k-q h3{margin:0 0 clamp(11px,1.2vw,16px);font-weight:700;line-height:1.02;
-          font-size:clamp(2.5rem,3.9vw,3.5rem);letter-spacing:-.036em}
+          font-size:clamp(1.75rem,3.1vw,2.75rem);letter-spacing:-.034em}
   /* De ch-eenheid is de breedte van de nul, en die is in Host Grotesk breder
      dan de gemiddelde letter: op 38ch stonden er 53 tekens op de langste regel.
      29ch komt uit op circa 40 -- kort genoeg dat het kwadrant als tegel leest
      en niet als tekstkolom. Gemeten op het lichtste kwadrant: 6,00:1. */
-  .k-q p{margin:0;font-size:1rem;line-height:1.58;color:var(--dim);
+  .k-q p{margin:0;font-size:var(--t-body);line-height:1.58;color:var(--dim);
          max-width:29ch}
 
   /* ── de systeemlijnen ────────────────
@@ -596,7 +613,7 @@
      de teksten staan één keer en verhuizen niet. */
   .fit{position:relative;color:var(--ink);padding:110px 0 60px;
        background:linear-gradient(180deg,var(--paper-shade) 0,var(--paper) var(--echo));
-    --qt:clamp(1.05rem,1.6vw,1.32rem)}
+    --qt:clamp(1.05rem,1.6vw,1.35rem)}   /* bovengrens = --t-h3 */
   /* de kapregel: hetzelfde gebaar als de pijl voor de bovenregel — vol
      beginnen, naar rechts uitdoven — maar op paginabreedte. Exact twee keer
      in gebruik: bij de twee overgangen tussen donker en licht. */
@@ -636,18 +653,18 @@
      hoort te staan -- dezelfde combinatie als in de hero -- en de sectie heeft
      een echt einde in plaats van uit te lopen in leegte. */
   .fs-slot{background:var(--navy);padding:clamp(20px,2.2vw,26px)}
-  .q-n{font-family:var(--m);font-size:.78rem;font-weight:600;color:var(--ember);
+  .q-n{font-family:var(--m);font-size:var(--t-nr);font-weight:600;color:var(--ember);
        letter-spacing:.1em;font-variant-numeric:tabular-nums}
   .q-t{margin:0;font-weight:700;letter-spacing:-.03em;color:var(--ink);
        font-size:var(--qt);line-height:1.2}
-  .q-s{margin:0;font-size:.97rem;line-height:1.5;color:var(--ink-2);
+  .q-s{margin:0;font-size:var(--t-body);line-height:1.5;color:var(--ink-2);
        max-width:62ch}
   /* het grote cijfer in het detailvlak: decoratie, herhaalt het nummer dat in
      de kop ernaast al staat, dus aria-hidden en standaard verborgen */
   .fs-groot{display:none;position:absolute;pointer-events:none;
     right:clamp(16px,1.8vw,26px);top:clamp(4px,.6vw,10px);
     font-family:var(--m);font-weight:600;line-height:1;
-    font-size:clamp(3.6rem,7vw,6.6rem);color:rgba(20,30,80,.055);
+    font-size:clamp(2.8rem,4.6vw,4.2rem);color:rgba(20,30,80,.055);
     font-variant-numeric:tabular-nums}
 
   /* ── vanaf hier alleen als het script gedraaid heeft ── */
@@ -773,18 +790,18 @@
     -webkit-mask:var(--src) left center/contain no-repeat;
             mask:var(--src) left center/contain no-repeat}
   .v .v-id .v-mark{flex:0 1 auto;margin:0}
-  .v-mark{font-weight:800;font-size:1.16rem;letter-spacing:-.03em;color:var(--ink);
+  .v-mark{font-weight:800;font-size:var(--t-h4);letter-spacing:-.03em;color:var(--ink);
           line-height:1.2;margin:0 0 10px}
   /* Nela heeft geen woordmerk. Staat de naam alleen in het slot, dan draagt hij
      het en krijgt hij het optische gewicht van de logo's ernaast. */
   .v-id:has(>.v-mark:only-child) .v-mark{font-family:var(--d);font-size:1.5rem}
-  .v-cat{font-family:var(--m);font-size:.6rem;font-weight:500;letter-spacing:.13em;
+  .v-cat{font-family:var(--m);font-size:var(--t-label-s);font-weight:500;letter-spacing:.13em;
          text-transform:uppercase;color:var(--ember);margin:0 0 14px;order:-1}
   /* :not(.v-mark) — anders wint deze regel (0,1,1) van .v-mark (0,1,0) en
      krijgen de drie tekstnamen bodygrijs op 14px in plaats van ink-navy */
-  .v p:not(.v-mark){margin:0 0 18px;font-size:.9rem;line-height:1.48;
+  .v p:not(.v-mark){margin:0 0 18px;font-size:var(--t-body-s);line-height:1.48;
                     color:var(--ink-2);flex:1}
-  .v-url{font-family:var(--m);font-size:.66rem;letter-spacing:.05em;color:var(--ink-3);
+  .v-url{font-family:var(--m);font-size:var(--t-label-s);letter-spacing:.05em;color:var(--ink-3);
          overflow-wrap:anywhere}
 
   /* de enige participatie: zelfde kaart, meer ruimte */
@@ -806,14 +823,18 @@
      als vergeten in plaats van als besluit. Hij krijgt hem dus, maar in wit
      tegen een oranje kop -- precies omgekeerd aan de andere drie, zodat de
      sectie apart blijft staan. De bovenregel komt niet terug. */
-  .team h2{margin:0 0 58px;font-weight:800;font-size:clamp(1.9rem,4.2vw,3.1rem);
-           line-height:1.04;letter-spacing:-.038em;max-width:min(16ch,100%);
-           color:var(--orange);display:flex;align-items:baseline;gap:.52em}
+  /* Zelfde maat als de drie andere sectiekoppen. Hij stond op 49,6 tegen 32,8:
+     vier secties, drie koppen op de ene maat en een op de andere. Het oranje
+     blijft -- dat is wat deze sectie apart zet, niet de grootte. */
+  .team h2{margin:0 0 58px;font-weight:700;
+           font-size:clamp(1.55rem,2.5vw,2.05rem);
+           line-height:1.14;letter-spacing:-.028em;max-width:min(16ch,100%);
+           color:var(--orange);display:flex;align-items:baseline;gap:16px}
   /* .58em, niet .86em zoals de andere drie: die koppen staan op 32,8px en deze
      op 49,6px. De pijl is een teken en geen letter -- meeschalen zou hem hier
      anderhalf keer zo dik maken als daar, en dan is hij het onderwerp. Zo blijft
      hij op beide plekken rond de 29px breed. */
-  .team h2::before{content:'';flex:none;width:.58em;height:.29em;
+  .team h2::before{content:'';flex:none;width:.86em;height:.43em;
     background-color:var(--white);transform:translateY(-.02em);
     -webkit-mask:var(--pijl);mask:var(--pijl)}
   .people{display:grid;grid-template-columns:1fr 1fr;gap:52px 60px}
@@ -847,14 +868,14 @@
   .p-bart img{object-position:50% 44%}
   .p-michel{--z:2.15; --ox:60%; --oy:23%}
   .p-michel img{object-position:60% 14%}
-  .person h3{margin:0 0 3px;font-weight:800;font-size:1.35rem;letter-spacing:-.03em}
-  .rol{margin:0 0 14px;font-family:var(--m);font-size:.66rem;letter-spacing:.13em;
+  .person h3{margin:0 0 3px;font-weight:800;font-size:var(--t-h3);letter-spacing:-.03em}
+  .rol{margin:0 0 14px;font-family:var(--m);font-size:var(--t-label-s);letter-spacing:.13em;
        text-transform:uppercase;color:var(--orange)}
-  .bio{margin:0 0 16px;font-size:.98rem;line-height:1.52;color:var(--dim);max-width:52ch}
+  .bio{margin:0 0 16px;font-size:var(--t-body);line-height:1.52;color:var(--dim);max-width:52ch}
   /* De onderlijn stond 3px onder de tekst en het raakdoel was 18px hoog -- onder
      de 24px-ondergrens van WCAG 2.5.8, laat staan de 44px van 2.5.5. De lijn
      zakt mee naar beneden; dat is dezelfde vorm die de mobiele regel al had. */
-  .li{display:inline-block;font-family:var(--m);font-size:.7rem;letter-spacing:.08em;
+  .li{display:inline-block;font-family:var(--m);font-size:var(--t-label);letter-spacing:.08em;
       color:var(--white);text-decoration:none;
       border-bottom:1px solid var(--hair);padding:15px 0 14px;
       transition:border-color .18s}
@@ -866,16 +887,16 @@
   footer{background:var(--navy-deep);padding:60px 0 44px}
   .f-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
          gap:20px 24px;padding-bottom:34px;border-bottom:1px solid var(--hair)}
-  .f-note{margin:0;font-family:var(--m);font-size:.68rem;font-weight:500;
+  .f-note{margin:0;font-family:var(--m);font-size:var(--t-label);font-weight:500;
           letter-spacing:.15em;text-transform:uppercase;color:var(--orange)}
   .f-links{display:flex;flex-wrap:wrap;gap:4px 30px;list-style:none;margin:30px 0 0;padding:0}
   .f-links a{display:inline-block;color:rgba(255,255,255,.72);text-decoration:none;
-             font-size:.94rem;font-weight:500;line-height:1.4;padding:14px 0;min-width:44px;
+             font-size:var(--t-body-s);font-weight:500;line-height:1.4;padding:14px 0;min-width:44px;
              transition:color .18s}
   .f-links a:hover,.f-links a:focus-visible{color:var(--white)}
-  .f-meta{margin:26px 0 0;font-family:var(--m);font-size:.7rem;line-height:1.95;
+  .f-meta{margin:26px 0 0;font-family:var(--m);font-size:var(--t-label);line-height:1.95;
           letter-spacing:.05em;color:rgba(255,255,255,.56)}
-  .f-wip{margin:20px 0 0;font-size:.9rem;line-height:1.5;color:rgba(255,255,255,.56)}
+  .f-wip{margin:20px 0 0;font-size:var(--t-body-s);line-height:1.5;color:rgba(255,255,255,.56)}
 
   /* ── kopletter ──────────────────────
      Familjen Grotesk draagt de koppen; lopende tekst, knoppen, labels en
@@ -919,7 +940,7 @@
     .draait .tick{opacity:0}
     .draait .tick.op{opacity:1;will-change:transform,opacity}
     .tick-fig{font-size:clamp(1.9rem,8.4vw,2.3rem)}
-    .tick-lab{margin-top:15px;font-size:.66rem;white-space:nowrap}
+    .tick-lab{margin-top:15px;white-space:nowrap}
     .rule{width:100%;bottom:-9px}           /* spant de hele baan */
     .dots{display:flex}
 
@@ -953,29 +974,29 @@
     .hero-main{justify-content:center}
 
     /* raakdoelen: geen enkele link haalde 44×44 */
-    .btn{padding:14px 22px;font-size:.92rem}
-    .li{display:inline-block;padding:14px 0 12px;font-size:.8rem}
+    .btn{padding:14px 22px}
+    .li{display:inline-block;padding:14px 0 12px}
     .f-links{gap:0 28px}
     .f-links a{padding:13px 0;min-width:44px}
 
-    .eyebrow{font-size:.75rem;letter-spacing:.14em;margin-bottom:24px}
+    .eyebrow{letter-spacing:.14em;margin-bottom:24px}
     .people{grid-template-columns:1fr;gap:40px}
     .person{grid-template-columns:132px 1fr;gap:0 20px}
-    .rol{font-size:.72rem;letter-spacing:.1em}
+    .rol{letter-spacing:.1em}
     .v-grid{grid-template-columns:1fr 1fr;gap:10px}
     .v{padding:18px 15px 16px}
-    .v-mark{font-size:1rem;min-height:0;margin-bottom:6px}
+    .v-mark{min-height:0;margin-bottom:6px}
     .v-id{min-height:36px;gap:9px;margin-bottom:11px}
     .v-logo{height:24px;width:138px} .v-ico{height:29px;width:29px}
-    .v-cat{font-size:.68rem;letter-spacing:.1em;margin-bottom:9px}
-    .v-url{font-size:.72rem}
+    .v-cat{letter-spacing:.1em;margin-bottom:9px}
+
     .v-grid{grid-auto-rows:1fr}
     .ventures{padding:68px 0 74px}
     .triad{padding:64px 0 70px}
     .team{padding:72px 0 78px}
     .fit{padding:72px 0 58px}
-    .f-note{font-size:.75rem}
-    .f-meta{font-size:.78rem;line-height:1.8}
+
+    .f-meta{line-height:1.8}
   }
 
   /* ── onder 760px ─────────────────────
@@ -1073,19 +1094,19 @@
        (25,6) stond deze kop nog maar 0,8px boven de drie sectiekoppen (24,8) --
        op een telefoon is dat geen verschil meer. 1.75rem houdt 3,2px afstand
        naar beneden en 3,2px naar de h1 toe. */
-    .team h2{font-size:1.75rem;margin-bottom:32px}
+    .team h2{margin-bottom:32px}
     /* portret boven de tekst: naast elkaar werd de biografie een strook van
        120px, negen regels van drie woorden */
     .person{grid-template-columns:1fr;gap:0}
     .person>.portret{grid-row:auto;width:150px;justify-self:start;margin-bottom:18px}
-    .person h3{font-size:1.5rem}
+
     .rol{margin-bottom:10px}
     /* één kolom: dan is elk woordmerk hoogte-begrensd in plaats van
        breedte-begrensd, en de beschrijving past er weer bij */
     .v-grid{grid-template-columns:1fr;gap:8px;grid-auto-rows:auto}
     .v{padding:16px 18px}
     .v-logo{width:100%;max-width:200px;height:28px}
-    .v p:not(.v-mark){font-size:.92rem;margin-bottom:14px}
+    .v p:not(.v-mark){margin-bottom:14px}
     /* De hero paste niet op een scherm van 568px: de cijferbalk viel er 70px
        onder, en dat spreekt het besluit "de hero vult het scherm, met de ticker
        als scroll-aanwijzing" tegen. De 70px zat in vier gaten die nooit met het
