@@ -300,24 +300,44 @@
      vier nummers uit het veld eronder in dezelfde monostijl; het is decoratie
      en staat daarom op aria-hidden -- een schermlezer die "01 plus 02 plus 03
      plus 04" voorleest krijgt niets wat de kwadranten niet al zeggen. */
-  .t-kop{display:grid;grid-template-columns:minmax(0,1fr) auto;
-         column-gap:clamp(24px,4vw,72px);align-items:start;
-         margin-bottom:clamp(38px,4.2vw,60px)}
-  .t-kop > *{min-width:0}
+  /* ── de uitspraak als eigen blok ─────
+     Deze zin stond als grijze bijschriftregel onder de kop en woog daarmee
+     niets tegen het krachtenveld eronder -- de sectie opende met platte tekst.
+     Nu een tegel op de nachtkleur: een toon dieper dan de sectie, met de zin op
+     statementgrootte en een oranje kantlijn ervoor. Dezelfde kantlijn als de
+     actieve kop in de fit-selector, dus geen nieuw gebaar.
+
+     De maat gaat van 16,8 naar 27px. Dat draait de verkleining van 29 augustus
+     half terug, en dat mag: die was er omdat de zin op 25,3px zwaarder woog dan
+     vier woorden van 19,8. Die vier woorden staan er nu op 56 in een eigen
+     kader, dus de aankondiging kan niet meer van het aanbod winnen. */
+  .t-claim{position:relative;display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    column-gap:clamp(24px,4vw,72px);align-items:center;
+    background:var(--navy-deep);border-left:3px solid var(--orange);
+    padding:clamp(26px,3.2vw,44px) clamp(24px,3vw,42px);
+    margin-bottom:clamp(38px,4.4vw,64px)}
+  .t-claim > *{min-width:0}
   /* Deze zin kondigt het aanbod aan; hij is het aanbod niet. 58 tekens is de
      leesbreedte waarop hij vier regels haalt in plaats van zes. Op .72 wit --
      8,71:1 op navy, ruim boven de norm. */
-  .t-intro{margin:0;font-size:1.05rem;font-weight:400;
-           color:rgba(255,255,255,.72);max-width:58ch;line-height:1.56;
-           letter-spacing:-.004em}
+  .t-intro{margin:0;font-size:clamp(1.2rem,1.95vw,1.68rem);font-weight:400;
+           color:rgba(255,255,255,.90);max-width:45ch;line-height:1.38;
+           letter-spacing:-.014em}
   /* flex-wrap, geen nowrap: op 320px past de reeks nog, maar hij mag afbreken
      in plaats van de sectie breder te maken dan het scherm. */
-  .t-motief{margin:0;justify-self:end;padding-top:.45rem;
-            display:flex;flex-wrap:wrap;align-items:baseline;gap:.2em .55em;
-            font-family:var(--m);font-size:.78rem;font-weight:600;
-            letter-spacing:.1em;color:var(--orange);
-            font-variant-numeric:tabular-nums}
-  .t-motief i{font-style:normal;opacity:.45}
+  /* De vier nummers als index naast de uitspraak: een kolom met haarlijnen
+     ertussen, die vooruitwijst naar de vier kwadranten eronder. Decoratief --
+     ze herhalen wat het veld al zegt -- dus aria-hidden. */
+  .t-motief{margin:0;justify-self:end;align-self:stretch;display:grid;
+            align-content:center;gap:0;
+            border-left:1px solid var(--hair);
+            padding-left:clamp(20px,2.4vw,36px);
+            font-family:var(--m);font-size:.86rem;font-weight:600;
+            letter-spacing:.14em;color:var(--orange);
+            font-variant-numeric:tabular-nums;text-align:right}
+  .t-motief span{padding:.46em 0;border-top:1px solid rgba(231,138,71,.26)}
+  .t-motief span:first-child{border-top:none}
 
   /* ── het krachtenveld ────────────────
      Het kader zit in twee pseudo-elementen in plaats van in een border op
@@ -975,8 +995,14 @@
        in Forward8. Het logo staat hier dus niet over de tekst heen maar sluit
        de kolom af, en de overgangslijn naar de volgende sectie loopt er vanaf
        verder. */
-    .t-kop{grid-template-columns:1fr;row-gap:18px;margin-bottom:34px}
-    .t-motief{justify-self:start;padding-top:0}
+    /* op een telefoon onder elkaar, en de index wordt weer een rij */
+    .t-claim{grid-template-columns:1fr;row-gap:20px;align-items:start;
+             padding:22px 20px;margin-bottom:32px}
+    .t-motief{justify-self:start;align-self:start;grid-auto-flow:column;
+              align-content:start;gap:0 1.4em;text-align:left;
+              border-left:none;border-top:1px solid var(--hair);
+              padding:12px 0 0}
+    .t-motief span{padding:0;border-top:none}
     /* het kader verdwijnt, de oranje openingsregel blijft: dat gebaar kondigt
        de sectie aan, het is niet de rand van een tabel */
     .k-veld::before{display:none}
@@ -1072,7 +1098,7 @@
     h1{margin-bottom:20px}
     .hero-sub{margin-bottom:26px}
     .stats{margin-top:24px}
-    .t-kop{margin-bottom:30px}
+    .t-claim{margin-bottom:28px}
     .fit .eyebrow{margin-bottom:30px}
     .people{gap:34px}
     .triad{padding:52px 0 56px}
@@ -1174,12 +1200,16 @@
     <!-- Asymmetrische kop: titel en lead links op leesbreedte, het motief
          rechts. Het motief is decoratie -- het herhaalt de vier nummers uit
          het veld eronder -- en staat daarom op aria-hidden. -->
-    <div class="t-kop">
-      <div>
-        <h2 class="eyebrow">De kracht van Forward8</h2>
-        <p class="t-intro">Forward8 combineert diepgaande expertise in AI-toepassingen, verdienmodellen en marktbenadering met een actief netwerk van oprichters, investeerders en organisaties die werken aan de toekomst van AI.</p>
-      </div>
-      <p class="t-motief" aria-hidden="true"><span>01</span><i>+</i><span>02</span><i>+</i><span>03</span><i>+</i><span>04</span></p>
+    <h2 class="eyebrow">De kracht van Forward8</h2>
+
+    <!-- De uitspraak van de sectie, als eigen blok. Hij stond hier als grijze
+         bijschriftregel onder de kop en verdween daarmee tegen het krachtenveld
+         eronder. Nu een nacht-tegel met een oranje kantlijn, de zin op
+         statementgrootte, en de vier nummers ernaast als index naar het veld.
+         Geen nieuwe tekst: dezelfde zin, dezelfde nummers. -->
+    <div class="t-claim">
+      <p class="t-intro">Forward8 combineert diepgaande expertise in AI-toepassingen, verdienmodellen en marktbenadering met een actief netwerk van oprichters, investeerders en organisaties die werken aan de toekomst van AI.</p>
+      <p class="t-motief" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></p>
     </div>
 
     <!-- Het krachtenveld. Eén kader, twee middenlijnen, vier kwadranten en het
