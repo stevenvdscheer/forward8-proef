@@ -921,8 +921,11 @@
      Een <dialog>, niet een eigen overlay. Die geeft de focusval, Escape, de
      backdrop en het uitschakelen van de pagina eronder kant-en-klaar; met een
      zelfgebouwde div moet dat alle vier met de hand, en dan is het meestal
-     halve focusval. De knoppen zijn zonder JavaScript een mailto naar
-     info@forward8.nl en blijven dat als het script niet laadt.
+     halve focusval. Zonder JavaScript valt het venster terug op een gewoon blok
+     onderaan de pagina -- zie de regels bij html:not(.js) hieronder. Er staat
+     nergens een e-mailadres in de broncode: er wordt er geen aangemaakt, dus
+     het enige adres dat er is, is dat van Bart, en dat hoort niet leesbaar in
+     een bestand dat spamscrapers langslopen.
 
      Nacht als grond, met de oranje kapregel erboven: hetzelfde gebaar als bij
      de twee overgangen in de pagina, hier als het teken dat je ergens anders
@@ -1011,6 +1014,18 @@
     .gesprek[open]{animation:g-in .26s cubic-bezier(.22,.9,.3,1)}
     @keyframes g-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   }
+
+  /* Zonder JavaScript kan een <dialog> niet opengaan, en dan zou de knop nergens
+     heen wijzen. Daarom valt het venster dan terug op een gewoon blok onderaan
+     de pagina, waar de knop met #gesprek naartoe springt. Het formulier post
+     dan native naar contact.php en PHP antwoordt met een eigen pagina -- er is
+     geen mailto en dus ook geen e-mailadres in de broncode dat spamscrapers
+     kunnen oogsten. Dezelfde .js-klasse die de rest van de pagina gebruikt. */
+  html:not(.js) .gesprek{display:block;position:static;max-width:none;width:auto;
+    margin:0;padding:0}
+  html:not(.js) .g-vel{max-height:none;border:0;border-radius:0;
+    max-width:620px;margin:0 auto;overflow:visible}
+  html:not(.js) .g-sluit{display:none}
   @media (max-width:559px){
     .g-slot{gap:12px}
     .gesprek .btn{width:100%;text-align:center}
@@ -1315,7 +1330,7 @@
     <h1 id="h1"></h1>
     <p class="hero-sub">Forward8 helpt AI-bedrijven te groeien met kennis, ervaring en toegang tot haar netwerk van corporates, overheden en MKB-ondernemers. Wil jij sparren met experts, toekomstige klanten en investeerders in ons ecosysteem?</p>
     <div class="hero-act">
-      <a class="btn" href="mailto:info@forward8.nl" data-gesprek>Start het gesprek &rarr;</a>
+      <a class="btn" href="#gesprek" data-gesprek>Start het gesprek &rarr;</a>
     </div>
     </div>
   </div>
@@ -1457,7 +1472,7 @@
       <div class="fs-kop" id="fs-k4" data-paneel="fs-p4"><span class="q-n">04</span><span class="q-t">Tractie</span></div>
       <div class="fs-paneel" id="fs-p4" aria-labelledby="fs-k4"><span class="fs-groot" aria-hidden="true">04</span><p class="q-s">Forward8 kijkt naar je businessplan, tractie en omzet, de kwaliteit van het team, de technologische differentiator, schaalbaarheid en de fit met het corporate netwerk.</p></div>
       <!-- bestaande knop, bestaande bestemming, bestaande tekst -->
-      <div class="fs-slot"><a class="btn" href="mailto:info@forward8.nl" data-gesprek>Start het gesprek &rarr;</a></div>
+      <div class="fs-slot"><a class="btn" href="#gesprek" data-gesprek>Start het gesprek &rarr;</a></div>
     </div>
   </div>
 </section>
@@ -1487,7 +1502,7 @@
 <footer>
   <div class="shell">
     <div class="f-top">
-      <a class="btn" href="mailto:info@forward8.nl" data-gesprek>Start het gesprek &rarr;</a>
+      <a class="btn" href="#gesprek" data-gesprek>Start het gesprek &rarr;</a>
     </div>
     <ul class="f-links">
       <li><a href="#samenwerking">Kracht</a></li>
@@ -1500,8 +1515,9 @@
 </footer>
 
 <!-- Het gesprek. Staat één keer in de pagina; alle drie de knoppen met
-     data-gesprek openen dit venster. Zonder JavaScript blijft elke knop de
-     mailto die in de href staat, dus de call to action werkt altijd.
+     data-gesprek openen dit venster. Zonder JavaScript springt #gesprek naar
+     ditzelfde blok, dat dan gewoon onderaan de pagina staat -- de call to
+     action werkt dus altijd, ook zonder script.
 
      De actie wijst naar contact.php op dezelfde host: het formulier post
      ook zónder script gewoon, en dan antwoordt PHP met een eigen pagina.
@@ -2081,12 +2097,14 @@
 <script>
 /* Het gesprek. Drie knoppen, één venster.
 
-   Progressive enhancement: in de HTML is elke knop een mailto en post het
-   formulier gewoon naar contact.php. Dit script onderschept dat alleen als de
-   browser <dialog> kent én fetch heeft. Kan hij het niet, dan gebeurt er niets
-   bijzonders en werkt de mailto. Laadt contact.php niet -- op de GitHub-proef
-   en in het artifact staat die niet -- dan valt het bij het versturen terug op
-   diezelfde mailto, met de ingevulde tekst eraan. */
+   Progressive enhancement: in de HTML wijst elke knop naar #gesprek en post
+   het formulier native naar contact.php. Dit script onderschept dat alleen als
+   de browser <dialog> kent én fetch heeft; kan hij het niet, dan staat het
+   formulier gewoon als blok op de pagina en werkt het zonder script.
+
+   Laadt contact.php niet -- op de GitHub-proef en in het artifact staat hij
+   niet -- dan toont het versturen Barts adres, uit stukjes opgebouwd, met de
+   ingevulde tekst er al in. Dat is de enige plek waar een adres verschijnt. */
 (function(){
   var dlg = document.getElementById('gesprek');
   if(!dlg || typeof dlg.showModal !== 'function' || !window.FormData) return;
@@ -2099,7 +2117,13 @@
       naamEl = form.querySelector('[data-bestandsnaam]'),
       opener = null,
       MAX    = 10 * 1024 * 1024,
-      ADRES  = 'info@forward8.nl';
+      /* Barts adres, in stukjes. Er wordt geen apart @forward8.nl-adres
+         aangemaakt, dus dit is het enige adres dat er is -- en dan hoort het
+         niet als leesbare tekst in de broncode te staan, want dan oogsten
+         spamscrapers het binnen een paar weken. Ze voeren geen JavaScript uit;
+         zo staat er nergens een aaneengesloten adres in het bestand. Alleen in
+         beeld als het versturen misgaat. */
+      ADRES  = ['bart', '.', 'kollau'].join('') + String.fromCharCode(64) + 'gmail.com';
 
   /* ── openen ─────────────────────── */
   function open(e){
