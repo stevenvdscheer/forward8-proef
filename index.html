@@ -1,9 +1,23 @@
+<!doctype html>
+<html lang="nl">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <!-- Dit is een proef ter beoordeling, geen live site. De noindex staat
      hier en niet in stijlproef.html: op forward8.nl moet hij er juist af. -->
-<title>Forward8 Stijlproef</title>
+<title>Forward8 &mdash; The AI Growth Ecosystem</title>
+<!-- De omschrijving is de subregel uit de hero, woordelijk: Stevens dictaat van
+     30 augustus. Geen aparte SEO-zin verzinnen die iets anders belooft dan wat
+     de bezoeker vervolgens leest. -->
+<meta name="description" content="Forward8 helpt AI-bedrijven te groeien met kennis, ervaring en toegang tot haar netwerk van corporates, overheden en MKB-ondernemers.">
+<!-- Doctype, <html lang="nl"> en de body-wikkel komen van build-artifact.py met
+     --standalone. Ze staan niet hier omdat het artifact het bestand zelf al in
+     een skelet zet en die dan zouden nesten. Zonder doctype rendert de pagina
+     in quirks mode; gemeten op de gepubliceerde proef van 1 september. -->
+<!-- Het echte merkteken uit forward8-mark.svg, niet een nagetekende F: de
+     tegel is uit het gerepareerde bronbestand gerenderd en op maat gebracht. -->
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAFDElEQVRYCe1WW2wUVRj+zszspd3tndIWBFIMBTWl2BBivDyYkBiJtlLjpcYmaiQB1ESj8UHRBzXwoGlIwAejDyR4SapV01DSRFtUIiWlIUbRVkurSFFocVv20r3Mzoz/f9rZnR23qbFqX/jT7pw5c87/f//3X84RFgmWUJQltC1NXwWguUMQiyVwaXIK6bQB4f74D985yTRNRVVlGQIBf46WDIDQVBj73+xEV/cJTF6ehmla/yoARRGoXFaKpm034+kn7kV5ebEEIrgKLvx2Ga2PvIqBwWH4/V6o6n+TGoZhIpFIYcvmDfjg0EtYuWIZBFFttT2+Fx93HUcwUJChh0OwUIUKISS1TDERRqxltoMchkJ+5AtjLBbH9qbbcPidFyAGT/9obb3rOVoswApZGOna2hoECnPjlVVPimktg/xueByaYqE6aKGc8HtUCylDYDoBXIwKGgM+1bkT5BiDNfH5kTegdff0I5XSUVDgk6uSSR1P7rwHe55vk+HI3Zp9S+lp7HrmAEpjo9h9E7C+0kKhx5KeMxtxHTgbUvDWKQ29owoBy+5lP9nmEbItqmpbLPaExaa872g7Guqvze7IMzrc8QUO7duL9x5S4KdU1kkFG2HqDQLA7156ZyBtnV4MjCvy3amKK0PTyRObev4ox47uHKekGb8wKfc549nReQxtN5oo8ChIkBGd4t/9k4rzVwRuWG7iltWUcGkg4AXuXm+g/1dKCAcLrJBta07j0gr9kAMZ+fbMKJrvfxGCMsoGwN/TtPnZB7xIUyx9xEDPsIqdXR65ho1+1JpEfZUl2agMWMhXWGw70wcyFl0DTpZ4PPUXAJzfCaKZQTEgLyWfbYRDcDEisLbMQgmlViItZJW4VMvXBQFoqoriosIcALwzEk/jyzEdt64GYing9loTbzfr6DijSmMxXeD7CQW1BOKrX7LsuUEsCGAjJeOJvoO0zw7A7DAUilDzegXVg5fQ2kDe0+dtdQbuWGfIEjw3JTA5I3DwpIouCg+HKZ/MM51d6vN6sOqa5dmJudHZsd+hpCKYmFHQM2LheirDVSUW/B7IflDi4/hbiCYFPh0CZihRuULcsiAA7gsTdDg5xSTF+15/F081hrFljYbxsED/eQV7elWsq7Cw/ToD9dWmbDgPbjTwM7Gxv1+T5erUw+MFAXAVtLS+nJMDaeo0xUoCW9tUBMnTFUUWesc09I0pFG/gQ8qD9+9LoqGGuyKwqcaUIXIb/1sADKqCSDSeA4A6NcrLZillVpl2Fp7ntstteDohiHIqB/rjBjXX5WcXOn417n75eoFjzew5wWeFPUmDcJL/BYJeC0ny8uEGA2EyOhkTaCD6N680kaJGxOD+oGRMEzjNdciybc3j0eShYuumOTLoWml/nHtyMoXiwPFzCh5rJMMEZk2phfY7ddl4uCIYFAPm/2MUGn66hW0ru3c0U6MhDSTMBB8SPZ8NZM4F7gP5hL1p/1rDJ0OqTDbqyJJm+8mhoFaBAyc1HB1R4XVlG9vctaPJeRwTSoLJtPDR3LipDkXBQlwJR3H6m5G8YeKY854NVIJ1FSYqColSAsLH8UQM+IEa0WhIwAZlO8I2+MbFx3HeCwkv4IOCy43D4SWq5hOKmIwvg6HlGWFgDMYdd14QpQtJi30hIWOzV7JHX8PAqaH//0rGABjVkl5KGYAt9rXcmLuk2POLfarzXMvlrXixyhezn9JkaeUqgD8BnGMyETSlN6kAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..600&family=Familjen+Grotesk:wght@400..700&display=swap">
@@ -891,12 +905,10 @@
 
   /* ── footer ─────────────────────────
      Geen lijn: het team is er in zijn laatste 40% al in gezakt, dus tonaal is
-     de grens er niet meer. Tijdelijk, zolang slot en contactformulier ontbreken. */
+     de grens er niet meer. */
   footer{background:var(--navy-deep);padding:60px 0 44px}
   .f-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
          gap:20px 24px;padding-bottom:34px;border-bottom:1px solid var(--hair)}
-  .f-note{margin:0;font-family:var(--m);font-size:var(--t-label);font-weight:500;
-          letter-spacing:.15em;text-transform:uppercase;color:var(--orange)}
   .f-links{display:flex;flex-wrap:wrap;gap:4px 30px;list-style:none;margin:30px 0 0;padding:0}
   .f-links a{display:inline-block;color:rgba(255,255,255,.72);text-decoration:none;
              font-size:var(--t-body-s);font-weight:500;line-height:1.4;padding:14px 0;min-width:44px;
@@ -904,7 +916,105 @@
   .f-links a:hover,.f-links a:focus-visible{color:var(--white)}
   .f-meta{margin:26px 0 0;font-family:var(--m);font-size:var(--t-label);line-height:1.95;
           letter-spacing:.05em;color:rgba(255,255,255,.56)}
-  .f-wip{margin:20px 0 0;font-size:var(--t-body-s);line-height:1.5;color:rgba(255,255,255,.56)}
+
+  /* ── het gesprek: dialoogvenster ────
+     Een <dialog>, niet een eigen overlay. Die geeft de focusval, Escape, de
+     backdrop en het uitschakelen van de pagina eronder kant-en-klaar; met een
+     zelfgebouwde div moet dat alle vier met de hand, en dan is het meestal
+     halve focusval. De knoppen zijn zonder JavaScript een mailto naar
+     info@forward8.nl en blijven dat als het script niet laadt.
+
+     Nacht als grond, met de oranje kapregel erboven: hetzelfde gebaar als bij
+     de twee overgangen in de pagina, hier als het teken dat je ergens anders
+     binnenstapt. */
+  .gesprek{border:0;padding:0;background:transparent;max-width:min(560px,calc(100vw - 32px));
+           width:100%;color:var(--white);overflow:visible}
+  .gesprek::backdrop{background:rgba(6,10,28,.72);backdrop-filter:blur(6px)}
+  /* vh eerst, dvh erover: browsers zonder dvh houden de vh-regel, de rest
+     krijgt de maat die met de adresbalk van een telefoon meebeweegt */
+  .g-vel{position:relative;background:var(--navy-deep);border:1px solid var(--hair);
+         border-radius:4px;padding:clamp(26px,4vw,40px);
+         max-height:calc(100vh - 40px);
+         max-height:calc(100dvh - 40px);overflow-y:auto}
+  .g-vel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,
+      var(--orange) 0,var(--orange) 16%,rgba(231,138,71,.14) 100%)}
+  .g-kop{font-family:var(--d);font-weight:700;font-size:clamp(1.5rem,3.4vw,1.85rem);
+         letter-spacing:-.022em;margin:0 0 26px;line-height:1.15}
+  .g-eyebrow{font-family:var(--m);font-size:var(--t-label-s);font-weight:500;
+             letter-spacing:.13em;text-transform:uppercase;color:var(--orange);margin:0 0 12px}
+  /* Sluiten is een echte knop met een raakdoel van 44px, geen kruisje van 16 */
+  .g-sluit{position:absolute;top:8px;right:8px;width:44px;height:44px;
+           display:grid;place-items:center;border:0;background:none;cursor:pointer;
+           color:rgba(255,255,255,.66);font-size:1.5rem;line-height:1;
+           appearance:none;-webkit-appearance:none;transition:color .18s;border-radius:3px}
+  .g-sluit:hover,.g-sluit:focus-visible{color:var(--white)}
+
+  .g-rij{margin:0 0 18px}
+  .g-rij label{display:block;font-family:var(--m);font-size:var(--t-label-s);font-weight:500;
+               letter-spacing:.13em;text-transform:uppercase;
+               color:rgba(255,255,255,.66);margin:0 0 7px}
+  .g-rij .g-opt{color:rgba(255,255,255,.42);letter-spacing:.08em}
+  .gesprek input[type=text],.gesprek input[type=email],.gesprek textarea{
+    width:100%;font:inherit;font-size:var(--t-body-s);color:var(--white);
+    background:rgba(255,255,255,.05);border:1px solid var(--hair);border-radius:3px;
+    padding:12px 14px;appearance:none;-webkit-appearance:none;
+    transition:border-color .18s,background .18s}
+  .gesprek textarea{min-height:112px;resize:vertical;line-height:1.5}
+  .gesprek input:focus,.gesprek textarea:focus{outline:0;border-color:var(--orange);
+    background:rgba(255,255,255,.08)}
+  .gesprek input::placeholder,.gesprek textarea::placeholder{color:rgba(255,255,255,.34)}
+
+  /* Het echte file-veld blijft in de DOM (anders verstuurt hij niets) maar
+     onzichtbaar; het label ervoor is de knop. */
+  .g-file input[type=file]{position:absolute;width:1px;height:1px;opacity:0;
+                           overflow:hidden;clip:rect(0 0 0 0)}
+  /* min-height 44: de pagina houdt overal 44×44 aan als raakdoel, en met
+     alleen padding kwam deze op 40 uit */
+  .g-file-knop{display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+    min-height:44px;font-size:var(--t-body-s);color:rgba(255,255,255,.82);
+    background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.26);
+    border-radius:3px;padding:12px 16px;transition:border-color .18s,color .18s}
+  .g-file-knop:hover{border-color:var(--orange);color:var(--white)}
+  .g-file input[type=file]:focus-visible + .g-file-knop{outline:2px solid var(--orange);
+    outline-offset:3px}
+  .g-file-naam{display:block;margin-top:8px;font-family:var(--m);
+               font-size:var(--t-label);color:rgba(255,255,255,.56);
+               overflow-wrap:anywhere}
+
+  .g-akkoord{display:flex;gap:11px;align-items:flex-start;margin:22px 0 0;
+             font-size:var(--t-label);line-height:1.5;color:rgba(255,255,255,.56)}
+  .g-akkoord input{flex:none;margin:2px 0 0;accent-color:var(--orange);width:16px;height:16px}
+  .g-akkoord a{color:rgba(255,255,255,.78)}
+
+  .g-slot{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px}
+  .gesprek .btn{border:0;cursor:pointer;font-family:inherit}
+  .gesprek .btn[disabled]{opacity:.55;cursor:progress}
+
+  /* Eén regel voor zowel veldfouten als de serverfout; rood is er niet in de
+     ladder, dus de fout leunt op oranje plus het woord zelf. */
+  .g-fout{margin:6px 0 0;font-size:var(--t-label);color:#F2A97E}
+  .g-melding{margin:0;font-size:var(--t-body-s);line-height:1.5;flex:1;min-width:180px}
+  .g-melding a{color:var(--orange)}
+  .gesprek [aria-invalid=true]{border-color:#F2A97E}
+
+  /* Het honeypot-veld. Niet display:none -- sommige bots vullen juist alles in
+     wat verborgen is; dit staat buiten beeld maar is voor hen gewoon een veld.
+     aria-hidden en tabindex houden het weg bij schermlezers en toetsenbord. */
+  .g-pot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .g-klaar{text-align:left}
+  .g-klaar .g-kop{margin-bottom:14px}
+  .g-klaar p{margin:0;font-size:var(--t-body-s);line-height:1.55;color:rgba(255,255,255,.72)}
+
+  @media (prefers-reduced-motion:no-preference){
+    .gesprek[open]{animation:g-in .26s cubic-bezier(.22,.9,.3,1)}
+    @keyframes g-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  }
+  @media (max-width:559px){
+    .g-slot{gap:12px}
+    .gesprek .btn{width:100%;text-align:center}
+  }
 
   /* ── kopletter ──────────────────────
      Familjen Grotesk draagt de koppen; lopende tekst, knoppen, labels en
@@ -1205,7 +1315,7 @@
     <h1 id="h1"></h1>
     <p class="hero-sub">Forward8 helpt AI-bedrijven te groeien met kennis, ervaring en toegang tot haar netwerk van corporates, overheden en MKB-ondernemers. Wil jij sparren met experts, toekomstige klanten en investeerders in ons ecosysteem?</p>
     <div class="hero-act">
-      <a class="btn" href="#">Start het gesprek &rarr;</a>
+      <a class="btn" href="mailto:info@forward8.nl" data-gesprek>Start het gesprek &rarr;</a>
     </div>
     </div>
   </div>
@@ -1347,7 +1457,7 @@
       <div class="fs-kop" id="fs-k4" data-paneel="fs-p4"><span class="q-n">04</span><span class="q-t">Tractie</span></div>
       <div class="fs-paneel" id="fs-p4" aria-labelledby="fs-k4"><span class="fs-groot" aria-hidden="true">04</span><p class="q-s">Forward8 kijkt naar je businessplan, tractie en omzet, de kwaliteit van het team, de technologische differentiator, schaalbaarheid en de fit met het corporate netwerk.</p></div>
       <!-- bestaande knop, bestaande bestemming, bestaande tekst -->
-      <div class="fs-slot"><a class="btn" href="#">Start het gesprek &rarr;</a></div>
+      <div class="fs-slot"><a class="btn" href="mailto:info@forward8.nl" data-gesprek>Start het gesprek &rarr;</a></div>
     </div>
   </div>
 </section>
@@ -1377,8 +1487,7 @@
 <footer>
   <div class="shell">
     <div class="f-top">
-      <a class="btn" href="#">Start het gesprek &rarr;</a>
-      <p class="f-note">Stijlproef &middot; augustus 2026</p>
+      <a class="btn" href="mailto:info@forward8.nl" data-gesprek>Start het gesprek &rarr;</a>
     </div>
     <ul class="f-links">
       <li><a href="#samenwerking">Kracht</a></li>
@@ -1386,10 +1495,77 @@
       <li><a href="#ingredienten">In gesprek</a></li>
       <li><a href="#team">Team</a></li>
     </ul>
-    <p class="f-meta">Forward8 B.V. &middot; KvK 42111493<br>Robert Planquettelaan 1, 3543 HA Utrecht<br>forward8.nl</p>
-    <p class="f-wip">Nog in aanbouw: de vier pijlers van het ecosysteem, founder-citaten en het contactformulier.</p>
+    <p class="f-meta">Forward8 B.V. &middot; KvK 42111493<br>Robert Planquettelaan 1, 3543 HA Utrecht<br>&copy; 2026 Forward8 B.V.</p>
   </div>
 </footer>
+
+<!-- Het gesprek. Staat één keer in de pagina; alle drie de knoppen met
+     data-gesprek openen dit venster. Zonder JavaScript blijft elke knop de
+     mailto die in de href staat, dus de call to action werkt altijd.
+
+     De actie wijst naar contact.php op dezelfde host: het formulier post
+     ook zónder script gewoon, en dan antwoordt PHP met een eigen pagina.
+     Met script gaat het via fetch en blijft de bezoeker waar hij is. -->
+<dialog class="gesprek" id="gesprek" aria-labelledby="g-titel">
+  <div class="g-vel">
+    <button type="button" class="g-sluit" data-sluit aria-label="Venster sluiten">&times;</button>
+
+    <form class="g-form" method="post" action="contact.php" enctype="multipart/form-data" novalidate>
+      <p class="g-eyebrow">Forward8</p>
+      <h2 class="g-kop" id="g-titel">Start het gesprek</h2>
+
+      <div class="g-rij">
+        <label for="g-naam">Naam</label>
+        <input type="text" id="g-naam" name="naam" required autocomplete="name" maxlength="120" autofocus>
+      </div>
+
+      <div class="g-rij">
+        <label for="g-mail">E-mail</label>
+        <input type="email" id="g-mail" name="email" required autocomplete="email" maxlength="180">
+      </div>
+
+      <div class="g-rij">
+        <label for="g-bedrijf">Bedrijf <span class="g-opt">(optioneel)</span></label>
+        <input type="text" id="g-bedrijf" name="bedrijf" autocomplete="organization" maxlength="120">
+      </div>
+
+      <div class="g-rij">
+        <label for="g-bericht">Bericht</label>
+        <textarea id="g-bericht" name="bericht" required maxlength="4000"></textarea>
+      </div>
+
+      <div class="g-rij g-file">
+        <label for="g-bijlage">Bijlage <span class="g-opt">(optioneel &middot; max 10 MB)</span></label>
+        <input type="file" id="g-bijlage" name="bijlage"
+               accept=".pdf,.doc,.docx,.ppt,.pptx,.png,.jpg,.jpeg">
+        <label class="g-file-knop" for="g-bijlage">
+          <span aria-hidden="true">&plus;</span> Kies een bestand
+        </label>
+        <span class="g-file-naam" data-bestandsnaam></span>
+      </div>
+
+      <!-- honeypot: leeg laten. Een bot vult hem, een mens ziet hem niet. -->
+      <div class="g-pot" aria-hidden="true">
+        <label for="g-website">Website</label>
+        <input type="text" id="g-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" name="geopend" value="">
+
+      <p class="g-akkoord">Je bericht en eventuele bijlage gaan rechtstreeks naar Forward8.</p>
+
+      <div class="g-slot">
+        <button type="submit" class="btn">Versturen &rarr;</button>
+        <p class="g-melding" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <div class="g-klaar" hidden>
+      <p class="g-eyebrow">Verstuurd</p>
+      <h2 class="g-kop">Dank je wel.</h2>
+      <p>We hebben je bericht binnen en nemen contact op.</p>
+    </div>
+  </div>
+</dialog>
 
 <script>
 /* Ecosysteem-netwerk achter de hero. Dekt nu de hele header — de strook boven
@@ -1901,3 +2077,149 @@
   start();
 })();
 </script>
+
+<script>
+/* Het gesprek. Drie knoppen, één venster.
+
+   Progressive enhancement: in de HTML is elke knop een mailto en post het
+   formulier gewoon naar contact.php. Dit script onderschept dat alleen als de
+   browser <dialog> kent én fetch heeft. Kan hij het niet, dan gebeurt er niets
+   bijzonders en werkt de mailto. Laadt contact.php niet -- op de GitHub-proef
+   en in het artifact staat die niet -- dan valt het bij het versturen terug op
+   diezelfde mailto, met de ingevulde tekst eraan. */
+(function(){
+  var dlg = document.getElementById('gesprek');
+  if(!dlg || typeof dlg.showModal !== 'function' || !window.FormData) return;
+
+  var form   = dlg.querySelector('.g-form'),
+      klaar  = dlg.querySelector('.g-klaar'),
+      meld   = dlg.querySelector('.g-melding'),
+      knop   = form.querySelector('button[type=submit]'),
+      file   = form.querySelector('input[type=file]'),
+      naamEl = form.querySelector('[data-bestandsnaam]'),
+      opener = null,
+      MAX    = 10 * 1024 * 1024,
+      ADRES  = 'info@forward8.nl';
+
+  /* ── openen ─────────────────────── */
+  function open(e){
+    e.preventDefault();
+    opener = e.currentTarget;
+    form.querySelector('[name=geopend]').value = String(Date.now());
+    dlg.showModal();
+  }
+  var knoppen = document.querySelectorAll('[data-gesprek]');
+  for(var i=0;i<knoppen.length;i++) knoppen[i].addEventListener('click', open);
+
+  /* Sluiten: het kruisje, en een klik náást het vel. De <dialog> zelf vult het
+     scherm, dus een klik die het vel niet raakt is een klik op de backdrop.
+     Escape en het teruggeven van de focus doet de browser zelf. */
+  dlg.querySelector('[data-sluit]').addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){ if(e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', function(){
+    if(opener && opener.focus) opener.focus();
+    /* pas opruimen als het venster dicht is, anders ziet de bezoeker het
+       formulier tijdens het sluiten terugspringen naar leeg */
+    if(klaar.hidden === false){ klaar.hidden = true; form.hidden = false; form.reset(); toonNaam(); }
+    zetMelding('');
+  });
+
+  /* ── bijlage ────────────────────── */
+  function toonNaam(){
+    var f = file.files && file.files[0];
+    if(!f){ naamEl.textContent = ''; return; }
+    naamEl.textContent = f.name + '  ·  ' + (f.size/1048576).toFixed(1) + ' MB';
+  }
+  file.addEventListener('change', function(){
+    var f = file.files && file.files[0];
+    if(f && f.size > MAX){
+      file.value = ''; toonNaam();
+      zetMelding('Dat bestand is groter dan 10 MB. Stuur het los naar ' + ADRES + '.');
+      return;
+    }
+    zetMelding(''); toonNaam();
+  });
+
+  /* ── validatie ──────────────────── */
+  function fout(el, tekst){
+    el.setAttribute('aria-invalid','true');
+    var p = el.parentNode.querySelector('.g-fout');
+    if(!p){ p = document.createElement('p'); p.className = 'g-fout'; el.parentNode.appendChild(p); }
+    p.textContent = tekst;
+  }
+  function schoon(el){
+    el.removeAttribute('aria-invalid');
+    var p = el.parentNode.querySelector('.g-fout');
+    if(p) p.remove();
+  }
+  function geldig(){
+    var ok = true, eerste = null;
+    ['g-naam','g-mail','g-bericht'].forEach(function(id){
+      var el = document.getElementById(id);
+      schoon(el);
+      if(!el.value.trim()){
+        fout(el,'Dit veld is nog leeg.'); ok = false; eerste = eerste || el;
+      } else if(id === 'g-mail' && !/^[^@\s]+@[^@\s.]+\.[^@\s]{2,}$/.test(el.value.trim())){
+        fout(el,'Controleer het e-mailadres.'); ok = false; eerste = eerste || el;
+      }
+    });
+    if(eerste) eerste.focus();
+    return ok;
+  }
+  ['g-naam','g-mail','g-bericht'].forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('input', function(){ if(el.getAttribute('aria-invalid')) schoon(el); });
+  });
+
+  /* ── versturen ──────────────────── */
+  function zetMelding(tekst, html){
+    if(html){ meld.innerHTML = tekst; } else { meld.textContent = tekst; }
+  }
+  function mailtoTerugval(){
+    var v = function(n){ return (form.elements[n] && form.elements[n].value || '').trim(); };
+    var body = 'Naam: ' + v('naam') + '\nBedrijf: ' + v('bedrijf') + '\n\n' + v('bericht');
+    return 'mailto:' + ADRES +
+           '?subject=' + encodeURIComponent('Contact via forward8.nl') +
+           '&body=' + encodeURIComponent(body);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!geldig()) return;
+
+    knop.disabled = true;
+    var oud = knop.textContent;
+    knop.textContent = 'Versturen…';
+    zetMelding('');
+
+    /* Alleen een melding die de sérver teruggaf mag de bezoeker zien. Een
+       netwerkfout geeft "Failed to fetch" -- Engels, technisch, en op een
+       Nederlandse pagina alleen maar verwarrend. Die vangen we generiek af. */
+    var serverFout = '';
+
+    fetch(form.action, {method:'POST', body:new FormData(form),
+                        headers:{'Accept':'application/json'}})
+      .then(function(r){ return r.json().catch(function(){ throw new Error('geen-json'); }); })
+      .then(function(d){
+        if(!d || !d.ok){
+          serverFout = (d && d.fout) ? String(d.fout) : '';
+          throw new Error('afgewezen');
+        }
+        form.hidden = true;
+        klaar.hidden = false;
+        klaar.setAttribute('tabindex','-1');
+        klaar.focus();
+      })
+      .catch(function(){
+        /* Twee gevallen: de server nam het niet aan (dan weet hij waarom), of
+           contact.php is onbereikbaar. In beide gevallen is een mailto met zijn
+           tekst er al in het nuttigste antwoord dat we kunnen geven. */
+        zetMelding((serverFout !== '' ? serverFout + ' ' : 'Versturen lukte niet. ') +
+                   '<a href="' + mailtoTerugval() +
+                   '">Mail het ons direct</a> — je tekst gaat mee.', true);
+      })
+      .then(function(){ knop.disabled = false; knop.textContent = oud; });
+  });
+})();
+</script>
+</html>
