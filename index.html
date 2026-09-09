@@ -10,7 +10,7 @@
      Sinds 9 september Engels: de vertaling van Stevens dictaat van 30 augustus.
      Geen aparte SEO-zin verzinnen die iets anders belooft dan wat de bezoeker
      vervolgens leest. -->
-<meta name="description" content="Forward8 helps AI companies grow with knowledge, experience and access to its network of corporates, governments and SMEs.">
+<meta name="description" content="Forward8 helps AI companies grow with knowledge, experience and access to its network of organisations, governments and SMEs.">
 
 <!-- ── deelkaart ───────────────────────
      Zonder deze regels maakt LinkedIn zelf maar iets van een gedeelde link. Geen
@@ -29,13 +29,13 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://forward8.nl/">
 <meta property="og:title" content="Forward8 — The AI Growth Ecosystem">
-<meta property="og:description" content="Forward8 helps AI companies grow with knowledge, experience and access to its network of corporates, governments and SMEs.">
+<meta property="og:description" content="Forward8 helps AI companies grow with knowledge, experience and access to its network of organisations, governments and SMEs.">
 <meta property="og:image" content="https://forward8.nl/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Forward8 — Where corporates don’t just watch AI startups grow: they fund it.">
+<meta property="og:image:alt" content="Forward8 — Where organisations don’t just watch AI startups grow: they fund it.">
 <meta name="twitter:card" content="summary_large_image">
-<!-- Doctype, <html lang="nl"> en de body-wikkel komen van build-artifact.py met
+<!-- Doctype, <html lang="en"> en de body-wikkel komen van build-artifact.py met
      --standalone. Ze staan niet hier omdat het artifact het bestand zelf al in
      een skelet zet en die dan zouden nesten. Zonder doctype rendert de pagina
      in quirks mode; gemeten op de gepubliceerde proef van 1 september. -->
@@ -975,7 +975,6 @@
        Samen leveren ze 80px op, en daarmee valt de hero terug op zijn
        min-height en staat de balk weer 4px boven de vouw. */
     .hero{padding-top:32px}
-    .hero .eyebrow{margin-bottom:18px}
     h1{margin-bottom:20px}
     .hero-sub{margin-bottom:26px}
     .stats{margin-top:24px}
@@ -1054,17 +1053,21 @@
   <canvas id="bg" aria-hidden="true"></canvas>
   <div class="hero-main">
     <div class="shell">
-    <p class="eyebrow">The only AI ecosystem in Europe</p>
+    <!-- Er stond hier een bovenregel: eerst "The AI Growth Ecosystem", en op 9 september
+         een paar uur lang "The only AI ecosystem in Europe", de eerste zes woorden van Barts
+         kop. Hij haalde hem er diezelfde ochtend via WhatsApp af: "Dit mag weg." -->
     <!-- Voluit in de opmaak, niet alleen in het script. Een lege <h1> is wat de
          link-voorbeeldrobot van LinkedIn leest, en die voert geen JavaScript uit;
          gemeten 1 september stond hier voor hem niets. Het script hieronder haalt
          de woorden hiervandaan, dus de tekst staat op één plek. -->
-    <!-- Barts zin van 9 september, in tweeën: de eerste zes woorden staan als
-         bovenregel erboven, de rest is de kop. In één stuk was hij 101 tekens en
-         vijf regels op desktop, gemeten; zo is het er drie. Woordelijk zijn tekst. -->
-    <h1 id="h1"><span class="h1-l1">Where corporates don’t just watch AI startups grow</span><br><span class="h1-l2 hl">— they fund it.</span></h1>
+    <!-- Barts zin van 9 september, zonder zijn eerste zes woorden (zie hierboven).
+         In één stuk was hij 101 tekens en vijf regels op desktop, gemeten; zo is het
+         er drie. "corporates" werd "organisations" op zijn verzoek, diezelfde ochtend:
+         "Overal het woord corporates vervangen door organizations" -- met een s,
+         zoals in zijn eigen tekst verderop staat. -->
+    <h1 id="h1"><span class="h1-l1">Where organisations don’t just watch AI startups grow</span><br><span class="h1-l2 hl">— they fund it.</span></h1>
     <!-- Vertaling van Stevens dictaat van 30 augustus; de vertaling is van mij. -->
-    <p class="hero-sub">Forward8 helps AI companies grow with knowledge, experience and access to its network of corporates, governments and SMEs. Want to spar with experts, future customers and investors in our ecosystem?</p>
+    <p class="hero-sub">Forward8 helps AI companies grow with knowledge, experience and access to its network of organisations, governments and SMEs. Want to spar with experts, future customers and investors in our ecosystem?</p>
     <div class="hero-act">
       <a class="btn" href="#gesprek" data-gesprek>Meet us?</a>
     </div>
@@ -1078,7 +1081,7 @@
   <div class="stats" id="cijfers">
     <div class="shell stats-in">
       <div class="tick"><b class="tick-fig"><span class="nr">25+</span><i class="rule"></i></b><span class="tick-lab">companies built</span></div><!-- opgave Steven -->
-      <div class="tick"><b class="tick-fig"><span class="nr">30</span><i class="rule"></i></b><span class="tick-lab">corporates in the network</span></div><!-- opgave Steven -->
+      <div class="tick"><b class="tick-fig"><span class="nr">30</span><i class="rule"></i></b><span class="tick-lab">organisations in the network</span></div><!-- opgave Steven -->
       <div class="tick"><b class="tick-fig"><span class="nr">30,000</span><i class="rule"></i></b><span class="tick-lab">relationships</span></div><!-- opgave Steven; Engels duizendtal, de teller leest de komma -->
       <div class="tick"><b class="tick-fig"><span class="nr">10&ndash;20%</span><i class="rule"></i></b><span class="tick-lab">minority stake</span></div><!-- brondocument -->
       <div class="tick"><b class="tick-fig"><span class="nr">2 years</span><i class="rule"></i></b><span class="tick-lab">intensive guidance track</span></div><!-- brondocument -->
@@ -1108,7 +1111,7 @@
          besluit van de opdrachtgever: dit zijn zijn alinea's. -->
     <div class="t-tekst">
       <p>Too many promising AI companies build a strong product, but never get past the first pilot. Not because the technology falls short — but because access to customers, capital, and the right network is missing.</p>
-      <p>That’s why we built Forward8: an AI Growth Ecosystem that connects pre-seed and seed AI startups with the companies, investors, and organisations they need to actually scale.</p>
+      <p>That’s why we built Forward8: an AI Growth Ecosystem that connects AI startups with the companies, investors, and organisations they need to actually scale.</p>
     </div>
   </div>
 </section>
@@ -1142,7 +1145,7 @@
     <p class="d-claim reveal">No loose advice. No non-committal networking event. One ecosystem where commercial traction and capital come together — with incentives that align: we only truly win when you grow.</p>
     <div class="d-voor">
       <article class="d-wie reveal"><p><strong>For AI founders</strong> who don’t want to win another pitch competition, but land a first customer, a first investor, or both.</p></article>
-      <article class="d-wie reveal"><p><strong>For corporates and investors</strong> who want to get in early with tomorrow’s AI companies — with pilot priority, exclusive roundtables, and direct deal and M&amp;A intelligence.</p></article>
+      <article class="d-wie reveal"><p><strong>For organisations and investors</strong> who want to get in early with tomorrow’s AI companies — with pilot priority, exclusive roundtables, and direct deal and M&amp;A intelligence.</p></article>
     </div>
   </div>
 </section>
@@ -1234,7 +1237,7 @@
       <li><a href="#criteria">Criteria</a></li>
       <li><a href="#team">Team</a></li>
     </ul>
-    <p class="f-meta" style="color:var(--orange)">Preview version &middot; 9 September 2026, 08:55 &middot; not the live site</p>
+    <p class="f-meta" style="color:var(--orange)">Preview version &middot; 9 September 2026, 11:35 &middot; not the live site</p>
     <p class="f-meta">Forward8 B.V. &middot; Chamber of Commerce 42111493<br>Robert Planquettelaan 1, 3543 HA Utrecht<br>&copy; 2026 Forward8 B.V.</p>
   </div>
 </footer>
